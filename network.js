@@ -12,11 +12,6 @@ export const registerPost = (nameVal, emailVal, passwordVal) => {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
     },
-    body: {
-      name: nameVal,
-      email: emailVal,
-      password: passwordVal,
-    }
   })
   .then((response) => response.text())
   .then((text) => {
