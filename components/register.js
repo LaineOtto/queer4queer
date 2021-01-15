@@ -5,7 +5,6 @@ import {
   Text,
   TextInput,
   Button,
-  ToastAndroid,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
@@ -48,7 +47,6 @@ const registerScreen = () => {
 };
 
 const registerClick = (name, email, password) => {
-  ToastAndroid.show("name:"+name, ToastAndroid.SHORT);
   registerPost(name, email, password);
 }
 

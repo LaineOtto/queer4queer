@@ -1,11 +1,10 @@
 import React from 'react';
-import { ToastAndroid, } from 'react-native';
 
 export const registerPost = (nameVal, emailVal, passwordVal) => {
   const url = 'https://l.kaigen.us/?name='+nameVal+
     "&email="+emailVal+
     "&password="+passwordVal
-  ToastAndroid.show(url, ToastAndroid.SHORT);
+  console.log(url);
 
   fetch(url, {
     method: 'POST',
@@ -15,7 +14,7 @@ export const registerPost = (nameVal, emailVal, passwordVal) => {
   })
   .then((response) => response.text())
   .then((text) => {
-    ToastAndroid.show(text, ToastAndroid.SHORT);
+    console.log(text);
   })
   .catch((error) => {
       console.error(error);
