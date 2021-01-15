@@ -8,6 +8,8 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
+import { signInPost } from '../network.js';
+
 const signInScreen = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -15,11 +17,6 @@ const signInScreen = () => {
   const navigation = useNavigation();
   return(
     <>
-      <TextInput
-        style={{borderWidth: 1, margin: 10, paddingVertical: 0}}
-        placeholder="Name"
-        onChangeText={name => setName(name)}
-      />
       <TextInput
         style={{borderWidth: 1, margin: 10, paddingVertical: 0}}
         placeholder="Email"
@@ -32,6 +29,7 @@ const signInScreen = () => {
       />
       <Button
         title="Sign In"
+        onPress={() => signInClick(email, password)}
       />
       <Button
         title="No account?"
@@ -40,5 +38,10 @@ const signInScreen = () => {
     </>
   );
 };
+
+const signInClick = async (email, password) => {
+  const pwHash = await JSHash(password, CONSTANTS.HashAlgorithms.sha256)
+  signInPost(email, pwHash);
+}
 
 export default signInScreen;
