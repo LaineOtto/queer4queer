@@ -7,6 +7,7 @@ import {
   Button,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { JSHash, CONSTANTS } from "react-native-hash";
 
 import { registerPost } from '../network.js';
 
@@ -46,8 +47,9 @@ const registerScreen = () => {
   );
 };
 
-const registerClick = (name, email, password) => {
-  registerPost(name, email, password);
+const registerClick = async (name, email, password) => {
+  const pwHash = await JSHash(password, CONSTANTS.HashAlgorithms.sha256)
+  registerPost(name, email, pwHash);
 }
 
 export default registerScreen;
