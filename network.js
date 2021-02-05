@@ -11,7 +11,6 @@ export const registerPost = (nameVal, emailVal, passwordVal) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
-      'Function': 'register'
     },
   })
   .then((response) => response.text())
@@ -33,7 +32,6 @@ export const signInPost = (nameVal, emailVal, passwordVal) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
-      'Function': 'signIn'
     },
   })
   .then((response) => response.text())
